@@ -16,7 +16,7 @@ public class App {
         System.out.println("Resultado: " + result + "en tiempo: " + duration);
     }
 
-    public static void runMaze() {
+    public static void runMaze(int n) {
         
     }
 }

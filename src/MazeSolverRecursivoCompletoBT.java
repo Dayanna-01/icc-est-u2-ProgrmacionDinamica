@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MazeSolverRecursivoFour implements MazeSolver {
+public class MazeSolverRecursivoCompletoBT implements MazeSolver {
 
     private List<Cell> path;
     private Set<Cell> visited;
@@ -9,9 +9,9 @@ public class MazeSolverRecursivoFour implements MazeSolver {
 
     
 
-    public MazeSolverRecursivoFour() {
+    public MazeSolverRecursivoCompletoBT() {
         this.path = new ArrayList<>();
-        this.visited = new HashSet<>();
+        this.visited = new LinkedHashSet<>();
     }
 
 
@@ -22,11 +22,20 @@ public class MazeSolverRecursivoFour implements MazeSolver {
         visited.clear();
         this.grid = grid;
         this.end = end;
-        if(grid == null||grid.length==0) return new MazeResult(path, visited);
+        if(grid == null||grid.length==0) return new MazeResult(new ArrayList<>(),new LinkedHashSet<>());
         if(findPath(star)){
-            return new MazeResult(path, visited);
+            System.out.println("CAMINO");
+            System.out.println(path);
+            System.out.println("Visitadas");
+            System.out.println(visited);
+            MazeResult resultado = new MazeResult(path, visited);
+            return resultado;
         }
-        return new MazeResult(new ArrayList<>(), visited);
+
+       
+        return new MazeResult(new ArrayList<>(),new LinkedHashSet<>());
+
+        
     }
 
 
@@ -42,19 +51,20 @@ public class MazeSolverRecursivoFour implements MazeSolver {
         if(current.equals(end)){
             return true;
         } 
-        if(findPath( new Cell(current.row+1,current.col)) || 
-           findPath( new Cell(current.row,current.col+1)) || 
-           findPath( new Cell(current.row-1,current.col))||
-           findPath( new Cell(current.row,current.col-1))){
+        if(findPath( new Cell(current.row,current.col+1)) ||
+         findPath( new Cell(current.row+1,current.col)) ||
+          findPath( new Cell(current.row-1,current.col))||
+          findPath( new Cell(current.row,current.col-1))){
             return true;
         }
+
         path.remove(path.size()-1);
-        return false;
+        return false;        
+      
     }
 
 
     private boolean isValid(Cell current) {
-        // TODO Auto-generated method stub
         if(!grid[current.row][current.col] || visited.contains(current)) return false;
         return true;
     }

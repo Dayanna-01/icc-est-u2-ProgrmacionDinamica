@@ -14,8 +14,6 @@ public class MazeSolverRecursivoFour implements MazeSolver {
         this.visited = new HashSet<>();
     }
 
-
-
     @Override
     public MazeResult getPath(boolean[][] grid, Cell star, Cell end) {
         path.clear();
@@ -28,8 +26,6 @@ public class MazeSolverRecursivoFour implements MazeSolver {
         }
         return new MazeResult(new ArrayList<>(), visited);
     }
-
-
 
     private boolean findPath(Cell current) {
         if(!isInMaze(current)){
@@ -58,8 +54,6 @@ public class MazeSolverRecursivoFour implements MazeSolver {
         if(!grid[current.row][current.col] || visited.contains(current)) return false;
         return true;
     }
-
-
 
     private boolean isInMaze(Cell current) {
         int row = current.row;

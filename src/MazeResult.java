@@ -18,6 +18,4 @@ public class MazeResult {
     public String toString() {
         return " [path=" + path + ", visited=" + visited + "]";
     }
-
-    
 }

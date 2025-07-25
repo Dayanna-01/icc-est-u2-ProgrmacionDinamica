@@ -21,11 +21,11 @@ public class Maze {
             for(int j =0;j<maze[0].length;j++){
                 Cell current = new Cell(i, j);
             if (visited.contains(current)) {
-                System.out.print(" o "); // Marca el camino
+                System.out.print(" o ");
             } else if (maze[i][j]) {
-                System.out.print(" - "); // Camino disponible
+                System.out.print(" - ");
             } else {
-                System.out.print(" * "); // Obstáculo
+                System.out.print(" * "); 
             }
             }
             System.out.println();
@@ -39,11 +39,11 @@ public class Maze {
             for(int j =0;j<maze[0].length;j++){
                 Cell current = new Cell(i, j);
             if (visited.contains(current)) {
-                System.out.print(" o "); // Marca el camino
+                System.out.print(" o "); 
             } else if (maze[i][j]) {
-                System.out.print(" - "); // Camino disponible
+                System.out.print(" - ");
             } else {
-                System.out.print(" * "); // Obstáculo
+                System.out.print(" * "); 
             }
             }
             System.out.println();

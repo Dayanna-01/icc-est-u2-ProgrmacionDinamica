@@ -23,5 +23,4 @@ public class EjerciciosPD {
         return resultado;
     
     }
-    
 }

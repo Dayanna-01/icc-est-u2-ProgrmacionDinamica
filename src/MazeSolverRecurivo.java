@@ -16,11 +16,9 @@ public class MazeSolverRecurivo implements MazeSolver {
         if(findPath(grid,star,end,path, visited)) {
             return new MazeResult(path, visited);
         }
-        // Si no se encontró camino, path estará vacío. Devolvemos el resultado con las celdas visitadas.
         return new MazeResult(path, visited);
     }
 
-    // Este método es un solver simple que solo se mueve hacia abajo y a la derecha.
     private boolean findPath(boolean[][] grid, Cell current, Cell end, List<Cell> path, Set<Cell> visited) {
         int row = current.row;
         int col = current.col;

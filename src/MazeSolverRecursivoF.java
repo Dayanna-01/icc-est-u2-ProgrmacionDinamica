@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MazeSolverRecursivoCompletoBT implements MazeSolver {
+public class MazeSolverRecursivoF implements MazeSolver {
 
     private List<Cell> path;
     private Set<Cell> visited;
@@ -9,10 +9,12 @@ public class MazeSolverRecursivoCompletoBT implements MazeSolver {
 
     
 
-    public MazeSolverRecursivoCompletoBT() {
+    public MazeSolverRecursivoF() {
         this.path = new ArrayList<>();
-        this.visited = new LinkedHashSet<>();
+        this.visited = new HashSet<>();
     }
+
+
 
     @Override
     public MazeResult getPath(boolean[][] grid, Cell star, Cell end) {
@@ -20,17 +22,14 @@ public class MazeSolverRecursivoCompletoBT implements MazeSolver {
         visited.clear();
         this.grid = grid;
         this.end = end;
-        if(grid == null||grid.length==0) return new MazeResult(new ArrayList<>(),new LinkedHashSet<>());
+        if(grid == null||grid.length==0) return path;
         if(findPath(star)){
-            System.out.println("CAMINO");
-            System.out.println(path);
-            System.out.println("Visitadas");
-            System.out.println(visited);
-            MazeResult resultado = new MazeResult(path, visited);
-            return resultado;
+            return path;
         }
-        return new MazeResult(new ArrayList<>(),new LinkedHashSet<>());
+        return new ArrayList<>();
     }
+
+
 
     private boolean findPath(Cell current) {
         if(!isInMaze(current)){
@@ -43,20 +42,22 @@ public class MazeSolverRecursivoCompletoBT implements MazeSolver {
         if(current.equals(end)){
             return true;
         } 
-        if(findPath( new Cell(current.row,current.col+1)) ||
-         findPath( new Cell(current.row+1,current.col)) ||
-          findPath( new Cell(current.row-1,current.col))||
-          findPath( new Cell(current.row,current.col-1))){
+        if(findPath( new Cell(current.row+1,current.col)) || findPath( new Cell(current.row,current.col+1)) || findPath( new Cell(current.row-1,current.col))||findPath( new Cell(current.row,current.col-1))){
             return true;
         }
-        path.remove(path.size()-1);
         return false;        
+      
     }
 
+
+
     private boolean isValid(Cell current) {
+        // TODO Auto-generated method stub
         if(!grid[current.row][current.col] || visited.contains(current)) return false;
         return true;
     }
+
+
 
     private boolean isInMaze(Cell current) {
         int row = current.row;
@@ -66,4 +67,5 @@ public class MazeSolverRecursivoCompletoBT implements MazeSolver {
         }
         return true;
     }
+    
 }
